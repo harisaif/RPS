@@ -1,0 +1,38 @@
+
+function playRound(playerRound, computerRound){
+    if(playerRound == "rock" && computerRound == "paper"){
+        return "You Lose! Paper beats Rock";
+    }else if(playerRound == "rock" && computerRound == "rock"){
+        return "It's a Tie!";
+    }else if(playerRound == "rock" && computerRound == "scissor"){
+        return "You Won! Rock beats Scissor";
+    } 
+    else if(playerRound == "paper" && computerRound == "paper"){
+        return "It's a Tie!";
+    }else if(playerRound == "paper" && computerRound == "rock"){
+        return "You Won! Paper beats Rock";
+    }else if(playerRound == "paper" && computerRound == "scissor"){
+        return "You Lose! Scissor beats Paper";
+    }
+    else if(playerRound == "scissor" && computerRound == "paper"){
+        return "You Won! Scissor beats Paper!";
+    }else if(playerRound == "scissor" && computerRound == "rock"){
+        return "You Lose! Rock beats Scissor";
+    }else if(playerRound == "scissor" && computerRound == "scissor"){
+        return "It's a Tie!";
+    }else{
+        return "Enter a valid choice cunt!";
+    }     
+}
+
+// player's choice
+const playerRound = prompt("Enter - Rock, Paper or Scissor").toLowerCase();
+// console.log(playerRound);
+
+// computer's choice
+const choice = ["rock", "paper", "scissor"];
+const random = Math.floor(Math.random() * choice.length);
+const computerRound = choice[random];
+// console.log(computerRound);
+
+console.log(playRound(playerRound, computerRound));

@@ -1,38 +1,96 @@
 
 function playRound(playerRound, computerRound){
     if(playerRound == "rock" && computerRound == "paper"){
-        return "You Lose! Paper beats Rock";
+        computerScore++;
+        console.clear();
+        console.log("You Lose! Paper beats Rock");
+        displayScore(playerScore, computerScore);
     }else if(playerRound == "rock" && computerRound == "rock"){
-        return "It's a Tie!";
+        computerScore++;
+        playerScore++;
+        console.clear();
+        console.log("It's a Tie!");
+        displayScore(playerScore, computerScore);
     }else if(playerRound == "rock" && computerRound == "scissor"){
-        return "You Won! Rock beats Scissor";
+        playerScore++;
+        console.clear();
+        console.log("You Won! Rock beats Scissor");
+        displayScore(playerScore, computerScore);
     } 
     else if(playerRound == "paper" && computerRound == "paper"){
-        return "It's a Tie!";
+        computerScore++;
+        playerScore++;
+        console.clear();
+        console.log("It's a Tie!");
+        displayScore(playerScore, computerScore);
     }else if(playerRound == "paper" && computerRound == "rock"){
-        return "You Won! Paper beats Rock";
+        playerScore++;
+        console.clear();
+        console.log("You Won! Paper beats Rock");
+        displayScore(playerScore, computerScore);
     }else if(playerRound == "paper" && computerRound == "scissor"){
-        return "You Lose! Scissor beats Paper";
+        computerScore++;
+        console.clear();
+        console.log("You Lose! Scissor beats Paper");
+        displayScore(playerScore, computerScore);
     }
     else if(playerRound == "scissor" && computerRound == "paper"){
-        return "You Won! Scissor beats Paper!";
+        playerScore++;
+        console.clear();
+        console.log("You Won! Scissor beats Paper!");
+        displayScore(playerScore, computerScore);
     }else if(playerRound == "scissor" && computerRound == "rock"){
-        return "You Lose! Rock beats Scissor";
+        computerScore++;
+        console.clear();
+        console.log("You Lose! Rock beats Scissor");
+        displayScore(playerScore, computerScore);
     }else if(playerRound == "scissor" && computerRound == "scissor"){
-        return "It's a Tie!";
+        computerScore++;
+        playerScore++;
+        console.clear();
+        console.log("It's a Tie!");
+        displayScore(playerScore, computerScore);
     }else{
         return "Enter a valid choice cunt!";
     }     
 }
 
-// player's choice
-const playerRound = prompt("Enter - Rock, Paper or Scissor").toLowerCase();
-// console.log(playerRound);
+  let playerScore = 0;
+  let computerScore = 0;
+game();
 
-// computer's choice
-const choice = ["rock", "paper", "scissor"];
-const random = Math.floor(Math.random() * choice.length);
-const computerRound = choice[random];
-// console.log(computerRound);
+    
+function game(){
+    for(let i = 1; i<=5; i++){
+        // player's choice
+        const playerRound = prompt("Enter - Rock, Paper or Scissor").toLowerCase();
+        // console.log(playerRound);
 
-console.log(playRound(playerRound, computerRound));
+        // computer's choice
+        const choice = ["rock", "paper", "scissor"];
+        const random = Math.floor(Math.random() * choice.length);
+        const computerRound = choice[random];
+        // console.log(computerRound);
+        playRound(playerRound, computerRound);
+    }
+
+   if(computerScore>playerScore){
+    console.log("Computer won!");
+    console.log("Your score is: "+playerScore);
+    console.log("Computer's score is: "+computerScore);
+   }else if(playerScore > computerScore){
+    console.log("You won!");
+    console.log("Your score is: "+playerScore);
+    console.log("Computer's score is: "+computerScore);
+   }else{
+    console.log("It's a tie!");
+    console.log("Your score is: "+playerScore);
+    console.log("Computer's score is: "+computerScore);
+   }
+    
+}
+
+function displayScore(playerScore, computerScore){
+    console.log("Your score is: "+playerScore);
+    console.log("Computer's score is: "+computerScore);
+}
